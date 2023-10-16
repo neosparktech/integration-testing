@@ -1,6 +1,9 @@
 spring:
   application:
-    name: patient-services      
+    name: patient-services  
+      
+  profiles:
+    active: prod      
 server.port: 4444
 
 feign.client.config.default.connectTimeout: 5000
@@ -39,6 +42,8 @@ spring:
   jpa:
     spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
+    generate-ddl: true
+    
   h2:
     console:
       enabled: true
