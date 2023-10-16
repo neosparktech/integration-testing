@@ -1,4 +1,4 @@
-package com.java.bytes.feign;
+package com.java.bytes.external;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;

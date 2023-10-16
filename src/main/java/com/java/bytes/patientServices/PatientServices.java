@@ -12,8 +12,8 @@ import org.springframework.util.StringUtils;
 
 import com.java.bytes.data.repositories.PatientRepo;
 import com.java.bytes.entities.Patient;
-import com.java.bytes.feign.ExternalUserInfo;
-import com.java.bytes.feign.User;
+import com.java.bytes.external.ExternalUserInfo;
+import com.java.bytes.external.User;
 
 import lombok.extern.slf4j.Slf4j;
 
