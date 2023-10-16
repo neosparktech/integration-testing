@@ -8,9 +8,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.prabhu</groupId>
-	<artifactId>unit-testing</artifactId>
+	<artifactId>integration-testing</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Unit-Testing</name>
+	<name>Integration-Testing</name>
 	<description>Demo project for Unit testing</description>
 	<properties>
 		<java.version>11</java.version>
