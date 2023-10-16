@@ -38,10 +38,10 @@ public class PatientServices {
 
 		try {
 			User user = externalUserInfo.getUserId(1);
-			// We can use this object for processing.. but in this case we are just printing
-			// it
+
 			log.info("## {}", user.toString());
 			Patient patient = Patient.builder().firstName(patientDTO.getFirstName()).lastName(patientDTO.getLastName())
+					.phoneNumber(user.getPhone()).emailAddress(user.getEmail())
 					.dateOfBirth(patientDTO.getDateOfBirth()).build();
 			return patientRepo.save(patient).getId();
 		} catch (feign.RetryableException ex) {
