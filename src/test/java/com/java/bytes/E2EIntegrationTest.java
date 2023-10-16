@@ -15,9 +15,12 @@ import javax.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -33,6 +36,9 @@ import lombok.extern.slf4j.Slf4j;
 @ActiveProfiles("test")
 @Slf4j
 @WireMockTest(httpPort = 3434)
+@Import(AppTestConfiguration.class)
+@EnableAutoConfiguration(exclude = SecurityAutoConfiguration.class)
+
 public class E2EIntegrationTest {
 
 	private static final String APPLICATION_JSON = "application/json";

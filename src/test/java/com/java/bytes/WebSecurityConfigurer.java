@@ -14,13 +14,13 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-@Profile("!test")
+@Profile("test")
 public class WebSecurityConfigurer {
 
 
 	@Bean
 	InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
-		UserDetails user = User.withUsername("admin").password(passwordEncoder.encode("password")).roles("USER")
+		UserDetails user = User.withUsername("test").password(passwordEncoder.encode("password")).roles("USER")
 				.build();
 		return new InMemoryUserDetailsManager(user);
 	}
