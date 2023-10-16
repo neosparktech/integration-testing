@@ -11,10 +11,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories
 @EntityScan
 @EnableFeignClients
-public class UnitTestingApplication {
+public class IntegerationTestApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UnitTestingApplication.class, args);
+		SpringApplication.run(IntegerationTestApplication.class, args);
 	}
 
 }
