@@ -28,6 +28,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
+import com.java.bytes.configuration.AppTestConfiguration;
 import com.java.bytes.controller.PatientController;
 
 import lombok.extern.slf4j.Slf4j;

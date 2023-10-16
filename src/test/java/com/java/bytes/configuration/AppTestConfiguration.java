@@ -1,4 +1,4 @@
-package com.java.bytes;
+package com.java.bytes.configuration;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.web.client.TestRestTemplate;

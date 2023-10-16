@@ -1,4 +1,4 @@
-package com.java.bytes;
+package com.java.bytes.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 @Profile("test")
-public class WebSecurityConfigurer {
+public class TestWebSecurityConfigurer {
 
 
 	@Bean
