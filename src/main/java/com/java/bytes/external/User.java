@@ -1,4 +1,4 @@
-package com.java.bytes.feign;
+package com.java.bytes.external;
 
 import lombok.Builder;
 import lombok.Data;
