@@ -29,7 +29,6 @@ import org.springframework.test.context.ActiveProfiles;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import com.java.bytes.configuration.AppTestConfiguration;
-import com.java.bytes.controller.PatientController;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -44,8 +43,6 @@ public class E2EIntegrationTest {
 
 	private static final String APPLICATION_JSON = "application/json";
 
-	@Autowired
-	private PatientController patientController;
 
 	@Value(value = "${local.server.port}")
 	private int port;
@@ -56,10 +53,6 @@ public class E2EIntegrationTest {
 	@Autowired
 	private EntityManager entityManager;
 
-	@Test
-	public void contextLoads() throws Exception {
-		assertTrue(patientController != null);
-	}
 
 	@Test
 	public void createPatientTest() {
