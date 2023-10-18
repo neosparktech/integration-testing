@@ -15,8 +15,6 @@ import javax.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -29,6 +27,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import com.java.bytes.configuration.AppTestConfiguration;
+import com.java.bytes.patientServices.PatientDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,7 +36,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @WireMockTest(httpPort = 3434)
 @Import(AppTestConfiguration.class)
-@EnableAutoConfiguration(exclude = SecurityAutoConfiguration.class)
 
 public class E2EIntegrationTest {
 
@@ -90,9 +88,10 @@ public class E2EIntegrationTest {
 				UUID.class, Collections.emptyMap());
 		assertTrue(responseUUID != null);
 
-		ResponseEntity<String> result = restTemplate
-				.getForEntity("http://localhost:" + port + "/patient/get/" + responseUUID, String.class);
+		ResponseEntity<PatientDTO> result = restTemplate
+				.getForEntity("http://localhost:" + port + "/patient/get/" + responseUUID, PatientDTO.class);
 		assertTrue(result.getStatusCode().is2xxSuccessful());
+		assertTrue(result.getBody().getEmailAddress().equalsIgnoreCase("wireMock@test.com"));
 	}
 
 	@Test
@@ -136,14 +135,14 @@ public class E2EIntegrationTest {
 	public void createStubforExternal_positiveResponse() {
 		stubFor(get(urlPathMatching("/users/1")).willReturn(aResponse().withStatus(200)
 				.withHeader("Content-Type", APPLICATION_JSON).withBody(
-						"{\"id\": 2,\"name\": \"Ervin Howell\",\"username\": \"Antonette\",\"email\": \"Shanna@melissa.tv\"}")));
+						"{\"id\": 2,\"name\": \"Ervin Howell\",\"username\": \"Antonette\",\"email\": \"wireMock@test.com\"}")));
 
 	}
 
 	public void createStubforExternal_timeoutResponse() {
 		stubFor(get(urlPathMatching("/users/1"))
 				.willReturn(aResponse().withStatus(200).withHeader("Content-Type", APPLICATION_JSON).withBody(
-						"{\"id\": 2,\"name\": \"Ervin Howell\",\"username\": \"Antonette\",\"email\": \"Shanna@melissa.tv\"}")
+						"{\"id\": 2,\"name\": \"Ervin Howell\",\"username\": \"Antonette\",\"email\": \"wireMock@test.com\"}")
 						.withFixedDelay(10_000)));
 
 	}

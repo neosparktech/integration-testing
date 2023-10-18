@@ -59,6 +59,7 @@ public class PatientServices {
 			throw new EntityNotFoundException();
 		}
 		return PatientDTO.builder().firstName(patient.getFirstName()).lastName(patient.getLastName())
+				.emailAddress(patient.getEmailAddress()).phoneNumber(patient.getPhoneNumber())
 				.dateOfBirth(patient.getDateOfBirth()).build();
 
 	}
